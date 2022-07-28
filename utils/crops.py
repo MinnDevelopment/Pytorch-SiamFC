@@ -1,5 +1,6 @@
 import numpy as np
-from scipy.misc import imresize
+from utils.image_utils import imresize
+# from scipy.misc import imresize
 
 
 def pad_frame(im, frame_sz, pos_x, pos_y, patch_sz, use_avg=True):

@@ -1,7 +1,8 @@
 from math import floor
 
 import numpy as np
-from scipy.misc import imresize
+# from scipy.misc import imresize
+from utils.image_utils import imresize
 
 # REMEMBER, numpy's image notation is always (Y,X,CH)
 

@@ -7,7 +7,8 @@ import json
 
 import numpy as np
 from imageio import imread
-from scipy.misc import imresize
+# from scipy.misc import imresize
+from utils.image_utils import imresize
 from torchvision.transforms import ToTensor
 from torch.utils.data import Dataset
 

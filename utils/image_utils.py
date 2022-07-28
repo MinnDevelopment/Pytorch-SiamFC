@@ -18,7 +18,7 @@ if the SIMD version is not installed the program should work just as fine with
 the default Pillow (without the massive speed gains, though).
 """
 import numpy as np
-from scipy.misc import imresize
+# from scipy.misc import imresize
 import PIL
 from PIL import Image
 try:
@@ -38,6 +38,17 @@ VALID_FLAGS = ['fast', 'safe']
 PIL_FLAGS = {'bilinear': PIL.Image.BILINEAR, 'bicubic': PIL.Image.BICUBIC,
              'nearest': PIL.Image.NEAREST}
 
+import cv2
+from imageio.core.util import Array
+def imresize(img: Array, size, interp='bilinear'):
+    size = size[::-1]
+    if interp == 'bilinear':
+        out = cv2.resize(img, size, cv2.INTER_LINEAR)
+    elif interp == 'bicubic':
+        out = cv2.resize(img, size, cv2.INTER_CUBIC)
+    else:
+        out = cv2.resize(img, size, cv2.INTER_NEAREST)
+    return Array(out)
 
 def decode_jpeg_fast(img_path):
     """ Jpeg decoding method implemented by jpeg4py, available in
